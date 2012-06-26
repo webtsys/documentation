@@ -54,7 +54,7 @@ function ReadBook()
 		*/
 		
 		?>
-		<div id="show_menu"></div><p id="show_menu_error" style="display:none;"></div>
+		<div id="show_menu"></div><p id="show_menu_error" style="display:none;"></p>
 		<?php
 			
 		recursive_list('documentation', $arr_cat, $arr_list_father, 0, $url_doc, $arr_perm=array());
