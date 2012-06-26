@@ -18,6 +18,8 @@ $lang['documentation']['edit_books']='Editar libros';
 
 $lang['documentation']['documentation_index']='Índice de documentación';
 
+$lang['documentation']['modify_order_chapters']='Modificar orden de capítulos';
+
 $lang['documentation']['go_to_index_books']='Ir a índice de libros';
 
 $lang['documentation']['edit_chapters']='Editar capítulos';

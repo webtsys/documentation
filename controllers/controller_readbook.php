@@ -45,7 +45,7 @@ function ReadBook()
 	if($idbook>0)
 	{
 	
-		list($arr_list_father, $arr_cat)=obtain_parent_list('documentation', 'title', 'parent', 'where idbook='.$_GET['IdBook']);
+		list($arr_list_father, $arr_cat)=obtain_parent_list('documentation', 'title', 'parent', 'where idbook='.$_GET['IdBook'].' order by position ASC');
 			
 		$url_doc=make_fancy_url($base_url, 'documentation', 'readbook', $title_book, array('IdBook' => $_GET['IdBook']) );
 		
@@ -114,12 +114,17 @@ function ReadBook()
 				{
 				
 					$next_to_parent=$pos_arr_list_parent+1;
-				
-					$query=$model['documentation']->select('where documentation.IdDocumentation='.$arr_list_father[$idparent][$next_to_parent], array('title'));
-				
-					list($title_next)=webtsys_fetch_row($query);
 					
-					$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_list_father[$idparent][$next_to_parent]) ).'">'.$title_next.'</a>';
+					if(isset($arr_list_father[$idparent][$next_to_parent]))
+					{
+					
+						$query=$model['documentation']->select('where documentation.IdDocumentation='.$arr_list_father[$idparent][$next_to_parent], array('title'));
+					
+						list($title_next)=webtsys_fetch_row($query);
+						
+						$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_list_father[$idparent][$next_to_parent]) ).'">'.$title_next.'</a>';
+						
+					}
 				}
 			
 			}

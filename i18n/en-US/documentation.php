@@ -2,11 +2,7 @@
 
 $lang['documentation']['end_book']='end_book';
 
-$lang['documentation']['next_chapter']='next_chapter';
-
 $lang['documentation']['first_chapter_book']='first_chapter_book';
-
-$lang['documentation']['prev_chapter']='prev_chapter';
 
 $lang['documentation']['no_exists_book']='no_exists_book';
 
@@ -22,6 +18,8 @@ $lang['documentation']['edit_books']='edit_books';
 
 $lang['documentation']['documentation_index']='documentation_index';
 
+$lang['documentation']['modify_order_chapters']='modify_order_chapters';
+
 $lang['documentation']['go_to_index_books']='go_to_index_books';
 
 $lang['documentation']['edit_chapters']='edit_chapters';
@@ -29,5 +27,9 @@ $lang['documentation']['edit_chapters']='edit_chapters';
 $lang['documentation']['edit_son_docs']='edit_son_docs';
 
 $lang['documentation']['no_next_chapter']='no_next_chapter';
+
+$lang['documentation']['next_chapter']='next_chapter';
+
+$lang['documentation']['prev_chapter']='prev_chapter';
 
 ?>
