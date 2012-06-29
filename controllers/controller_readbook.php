@@ -67,6 +67,9 @@ function ReadBook()
 		
 		if($arr_doc['IdDocumentation']>0)
 		{
+
+			$arr_doc['title']=I18nField::show_formatted($arr_doc['title']);
+			$arr_doc['content']=I18nField::show_formatted($arr_doc['content']);
 		
 			?>
 			<h1><?php echo $arr_doc['title']; ?></h1>
@@ -91,6 +94,8 @@ function ReadBook()
 				$query=$model['documentation']->select('where documentation.IdDocumentation='.$iddocumentation, array('title'));
 				
 				list($title_next)=webtsys_fetch_row($query);
+
+				$title_next=I18nField::show_formatted($title_next);
 			
 				$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $iddocumentation) ).'">'.$title_next.'</a>';
 			
@@ -121,6 +126,8 @@ function ReadBook()
 						$query=$model['documentation']->select('where documentation.IdDocumentation='.$arr_list_father[$idparent][$next_to_parent], array('title'));
 					
 						list($title_next)=webtsys_fetch_row($query);
+
+						$title_next=I18nField::show_formatted($title_next);
 						
 						$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_list_father[$idparent][$next_to_parent]) ).'">'.$title_next.'</a>';
 						
@@ -137,6 +144,8 @@ function ReadBook()
 				$query=$model['documentation']->select('where documentation.IdDocumentation='.$arr_list_father[$arr_doc['parent']][$next_to_parent], array('title'));
 				
 				list($title_next)=webtsys_fetch_row($query);
+
+				$title_next=I18nField::show_formatted($title_next);
 					
 				$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_list_father[$arr_doc['parent']][$next_to_parent]) ).'">'.$title_next.'</a>';
 			
@@ -162,6 +171,7 @@ function ReadBook()
 				$query=$model['documentation']->select('where documentation.IdDocumentation='.$iddocumentation_prev, array('title'));
 				
 				list($title_prev)=webtsys_fetch_row($query);
+				$title_prev=I18nField::show_formatted($title_prev);
 				
 				$prev_link=' <a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_prev, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $iddocumentation_prev)).'">'.$title_prev.'</a>';
 				
@@ -181,7 +191,8 @@ function ReadBook()
 					$query=$model['documentation']->select('where documentation.IdDocumentation='.$iddocumentation_prev, array('title'));
 				
 					list($title_prev)=webtsys_fetch_row($query);
-					
+					$title_prev=I18nField::show_formatted($title_prev);
+
 					$prev_link=' <a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_prev, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $iddocumentation_prev)).'">'.$title_prev.'</a>';
 				
 				}
@@ -197,6 +208,8 @@ function ReadBook()
 				$query=$model['documentation']->select('where documentation.IdDocumentation='.$arr_doc['parent'], array('title'));
 				
 				list($title_prev)=webtsys_fetch_row($query);
+
+				$title_prev=I18nField::show_formatted($title_prev);
 				
 				$prev_link=' <a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_prev, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_doc['parent'])).'">'.$title_prev.'</a>';
 				
