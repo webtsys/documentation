@@ -1,14 +1,16 @@
 <?php
 
+load_libraries(array('i18n_fields'));
+
 $model['book']=new Webmodel('book');
 $model['book']->components['title']=new CharField(255);
 $model['book']->components['title']->required=1;
 
 $model['documentation']=new Webmodel('documentation');
 
-$model['documentation']->components['title']=new CharField(255);
+$model['documentation']->components['title']=new I18nField(new TextHTMLField());
 $model['documentation']->components['title']->required=1;
-$model['documentation']->components['content']=new TextHTMLField();
+$model['documentation']->components['content']=new I18nField(new TextHTMLField());
 $model['documentation']->components['content']->required=1;
 $model['documentation']->components['parent']=new ParentField('documentation');
 $model['documentation']->components['idbook']=new ForeignKeyField('book');

@@ -3,7 +3,9 @@
 function DocumentationAdmin()
 {
 
-	global $lang, $base_url, $model, $base_path;
+	global $lang, $base_url, $model, $base_path, $header;
+
+	$header='<script language="Javascript" src="'.make_fancy_url($base_url, 'jscript', 'load_jscript', 'script', array('input_script' => 'jquery.min.js')).'"></script>';
 	
 	settype($_GET['op'], 'integer');
 	settype($_GET['parent'], 'integer');
@@ -47,8 +49,10 @@ function DocumentationAdmin()
 			<?php
 			
 			$model['documentation']->create_form();
-			
-			$model['documentation']->forms['content']->form='TextAreaBBForm';
+			//MultiLangForm($field, $class='', $arr_values=array(), $type_form='TextForm')
+			$model['documentation']->forms['content']->form='MultiLangForm';
+
+			$model['documentation']->forms['content']->parameters=array('content', $class='', $arr_values=array(), $type_form='TextAreaBBForm');
 			
 			$model['documentation']->forms['idbook']->form='HiddenForm';
 			$model['documentation']->forms['idbook']->SetForm($_GET['IdBook']);
