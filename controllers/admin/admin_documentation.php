@@ -43,7 +43,7 @@ function DocumentationAdmin()
 			$query=$model['book']->select('where IdBook='.$_GET['IdBook'], array('title'));
 			
 			list($title_book)=webtsys_fetch_row($query);
-	
+			$title_book=I18nField::show_formatted($title_book);
 			?>
 			<h3><?php echo $lang['documentation']['documentation_index']; ?> - <?php echo $title_book;?></h3>
 			<?php
