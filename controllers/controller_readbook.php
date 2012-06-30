@@ -40,6 +40,8 @@ function ReadBook()
 	
 	list($idbook, $title_book)=webtsys_fetch_row($query);
 	
+	$title_book=I18nField::show_formatted($title_book);
+
 	settype($idbook, 'integer');
 	
 	if($idbook>0)

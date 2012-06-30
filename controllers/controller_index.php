@@ -27,9 +27,11 @@ function Index()
 		<?php
 		while(list($idbook, $title)=webtsys_fetch_row($query))
 		{
+
+			$title=I18nField::show_formatted($title);
 		
 			$url_opt=make_fancy_url($base_url, 'documentation', 'readbook', $title, array('IdBook' => $idbook) );
-		
+			
 			?>
 			<li><a href="<?php echo $url_opt; ?>"><?php echo $title; ?></a></li>
 			<?php
