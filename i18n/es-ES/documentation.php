@@ -1,5 +1,7 @@
 <?php
 
+$lang['documentation']['documentation']='Documentación';
+
 $lang['documentation']['end_book']='Fin de libro';
 
 $lang['documentation']['first_chapter_book']='Principio del libro';

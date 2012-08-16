@@ -4,7 +4,7 @@ global $lang;
 
 load_lang('documentation');
 
-$select_page[]=$lang['translations']['translations'];
+$select_page[]=$lang['documentation']['documentation'];
 $select_page[]='optgroup';
 
 $select_page[]=$lang['documentation']['documentation'];
