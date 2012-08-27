@@ -105,6 +105,7 @@ function ReadBook()
 			else
 			if( count( $arr_list_father[$arr_doc['parent']] ) == ($pos_arr_list+1))
 			{
+			
 				//Is the last in the docs with the same parent...
 				//Obtain next from parent...
 				
@@ -115,11 +116,14 @@ function ReadBook()
 				
 				list($idparent)=webtsys_fetch_row($query);
 				settype($idparent, 'integer');
+				
+				//Get the father of the father...
+				
 				$pos_arr_list_parent=array_search($arr_doc['parent'], $arr_list_father[$idparent]);
 				
 				if($pos_arr_list_parent!==false)
 				{
-				
+					
 					$next_to_parent=$pos_arr_list_parent+1;
 					
 					if(isset($arr_list_father[$idparent][$next_to_parent]))
@@ -134,6 +138,22 @@ function ReadBook()
 						$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_list_father[$idparent][$next_to_parent]) ).'">'.$title_next.'</a>';
 						
 					}
+					else
+					if(isset($arr_list_father[$pos_arr_list_parent][$next_to_parent]))
+					{
+					
+						//echo $arr_list_father[$pos_arr_list_parent][$next_to_parent];
+						
+						$query=$model['documentation']->select('where documentation.IdDocumentation='.$arr_list_father[$pos_arr_list_parent][$next_to_parent], array('title'));
+					
+						list($title_next)=webtsys_fetch_row($query);
+
+						$title_next=I18nField::show_formatted($title_next);
+						
+						$next_link='<a href="'.make_fancy_url($base_url, 'documentation', 'readbook', $title_next, array('IdBook' => $_GET['IdBook'], 'IdDocumentation' => $arr_list_father[$pos_arr_list_parent][$next_to_parent]) ).'">'.$title_next.'</a>';
+					
+					}
+					
 				}
 			
 			}
