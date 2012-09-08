@@ -2,6 +2,7 @@ Knowed bugs.
 ------------------
 
 When modify chapter, its must return to father edition...
+Error in order chapters: show no formatted chapter name. 
 
 
 New Features for next versions.
